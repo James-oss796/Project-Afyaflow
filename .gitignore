@@ -31,11 +31,8 @@ dist-ssr/
 Thumbs.db
 
 # Secrets
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.
+.env.example/
 
 # Spring Boot
 AfyaFlow-Backend/target/
@@ -46,3 +43,7 @@ AfyaFlow-Backend/.project
 AfyaFlow-Backend/.settings
 AfyaFlow-Backend/.springBeans
 AfyaFlow-Backend/.sts4-cache
+
+.env.example
+
+
