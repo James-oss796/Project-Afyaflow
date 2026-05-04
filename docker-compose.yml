@@ -1,22 +1,18 @@
 services:
-
   mysql:
     image: mysql:8.0
-    container_name: afyaflow-mysql 
     environment:
       MYSQL_ROOT_PASSWORD: james1421
       MYSQL_DATABASE: database_afyaflow
     ports:
       - "3307:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
+    # ❌ Remove volumes: Render doesn't support top-level volumes
+    # If you need persistence, use Render Managed MySQL instead
 
   afyaflow-backend:
     build: ./AfyaFlow-Backend
     ports:
       - "8080:8080"
-    depends_on:
-      - mysql
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/database_afyaflow?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
@@ -28,12 +24,8 @@ services:
     build: ./AfyaFlow-Frontend
     ports:
       - "5173:80"
-    depends_on:
-      - afyaflow-backend
 
   afyaflow-staff:
     build: ./afyaflow-react
     ports:
       - "5174:80"
-    depends_on:
-      - afyaflow-backend
