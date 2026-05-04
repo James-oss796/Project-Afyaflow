@@ -37,6 +37,3 @@ services:
       - "5174:80"
     depends_on:
       - afyaflow-backend
-
-volumes:
-  mysql_data: 
